@@ -16,7 +16,7 @@ def file_exists(file_path):
 
 def main():
   for root, dirs, files in os.walk(path):
-    if not root.split('/')[1] in languages:
+    if len(root.split('/')) <= 1 or not root.split('/')[1] in languages:
         continue
     print('Checking ' + root)
     makefile = os.path.join(root, "Makefile")
