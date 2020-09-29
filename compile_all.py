@@ -5,6 +5,9 @@ from lazyme.string import color_print
 path = '.'
 action = 'compile'
 
+### Restrict the experimentation to Rust, Python and JS
+languages = ['Rust', 'Python', 'JavaScript']
+
 def file_exists(file_path):
     if not file_path:
         return False
@@ -15,12 +18,12 @@ def main():
   for root, dirs, files in os.walk(path):
     print('Checking ' + root)
     makefile = os.path.join(root, "Makefile")
-    if file_exists(makefile):
+    if file_exists(makefile) and root.split('/')[1] in languages:
       cmd = 'cd ' + root + '; make ' + action
       #cmd = 'ls -la'
       pipes = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
       std_out, std_err = pipes.communicate()
-      
+
       if (action == 'compile') | (action == 'run'):
         if pipes.returncode != 0:
           # an error happened!
@@ -49,6 +52,5 @@ if __name__ == '__main__':
   else:
     color_print('Performing \"compile\" action...', color='yellow', bold=True)
     action = 'compile'
-  
+
   main()
-    
