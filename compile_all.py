@@ -16,9 +16,11 @@ def file_exists(file_path):
 
 def main():
   for root, dirs, files in os.walk(path):
+    if not root.split('/')[1] in languages:
+        continue
     print('Checking ' + root)
     makefile = os.path.join(root, "Makefile")
-    if file_exists(makefile) and root.split('/')[1] in languages:
+    if file_exists(makefile):
       cmd = 'cd ' + root + '; make ' + action
       #cmd = 'ls -la'
       pipes = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
