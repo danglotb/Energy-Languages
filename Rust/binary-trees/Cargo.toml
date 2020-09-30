@@ -9,3 +9,6 @@ edition = "2018"
 [dependencies]
 rayon = "1.4.0"
 typed-arena = "2.0.1"
+
+[profile.dev]
+opt-level = 3

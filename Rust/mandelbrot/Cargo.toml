@@ -8,3 +8,6 @@ edition = "2018"
 
 [dependencies]
 rayon = "0.7.0"
+
+[profile.dev]
+opt-level = 3
