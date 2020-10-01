@@ -7,7 +7,7 @@ action = 'compile'
 
 ### Restrict the experimentation to Rust, Python and JS
 languages = ['Rust', 'Python', 'JavaScript']
-selected_projects = ['binaries-tree', 'fannkuch-redux', 'fasta']
+selected_projects = ['binary-tree', 'fannkuch-redux', 'fasta']
 
 def file_exists(file_path):
     if not file_path:
