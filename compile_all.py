@@ -7,6 +7,7 @@ action = 'compile'
 
 ### Restrict the experimentation to Rust, Python and JS
 languages = ['Rust', 'Python', 'JavaScript']
+selected_projects = ['binaries-tree', 'fannkuch-redux', 'fasta']
 
 def file_exists(file_path):
     if not file_path:
@@ -16,10 +17,11 @@ def file_exists(file_path):
 
 def main():
   for root, dirs, files in os.walk(path):
-    if len(root.split('/')) <= 1 or not root.split('/')[1] in languages:
-        continue
 
+    if len(root.split('/')) <= 2 or not root.split('/')[1] in languages or not root.split('/')[2] in selected_projects:
+        continue
     makefile = os.path.join(root, "Makefile")
+
     if file_exists(makefile):
       print('Using', makefile)
       cmd = 'cd ' + root + '; make ' + action
