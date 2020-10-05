@@ -2,6 +2,7 @@ from numpy           import linspace, reshape
 from matplotlib      import pyplot
 from multiprocessing import Pool
 import sys
+import os
 
 xmin, xmax = -2.0 ,0.5   # x range
 ymin, ymax = -1.25,1.25  # y range
@@ -19,11 +20,11 @@ X = linspace(xmin,xmax,nx) # lists of x and y
 Y = linspace(ymin,ymax,ny) # pixel co-ordinates
 
 # main loops
-p = Pool()
+p = Pool(os.cpu_count()*2)
 Z = [complex(x,y) for y in Y for x in X]
 N = p.map(mandelbrot,Z)
+p.close()
 
 N = reshape(N, (nx,ny)) # change to rectangular array
-
 pyplot.imshow(N) # plot the image
-pyplot.show()
+#pyplot.show()
