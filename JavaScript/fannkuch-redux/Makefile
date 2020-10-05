@@ -2,7 +2,7 @@ compile:
 	cp -L fannkuchredux.node-4.node fannkuchredux.node-4.js
 measure:
 	sudo modprobe msr
-	sudo ../../RAPL/main "node fannkuchredux.node-4.js 12" JavaScript fannkuch-redux
+	sudo cgexec -g perf_event:bench ../../RAPL/main "node fannkuchredux.node-4.js 12" JavaScript fannkuch-redux
 
 run:
 	node fannkuchredux.node-4.js 12

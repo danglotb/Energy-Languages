@@ -2,7 +2,7 @@ compile:
 	cp -L binarytrees.node binarytrees.js
 measure:
 	sudo modprobe msr
-	sudo ../../RAPL/main "node binarytrees.js 21" JavaScript binary-trees
+	sudo cgexec -g perf_event:bench ../../RAPL/main "node binarytrees.js 21" JavaScript binary-trees
 
 run:
 	node binarytrees.js 21

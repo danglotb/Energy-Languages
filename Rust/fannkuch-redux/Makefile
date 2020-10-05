@@ -3,7 +3,7 @@ compile:
 
 measure:
 	sudo modprobe msr
-	sudo ../../RAPL/main "cargo run 12" Rust fannkuch-redux
+	sudo cgexec -g perf_event:bench ../../RAPL/main "cargo run 12" Rust fannkuch-redux
 
 run:
 	cargo run 12

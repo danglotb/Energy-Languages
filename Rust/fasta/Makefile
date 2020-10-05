@@ -3,7 +3,7 @@ compile:
 
 measure:
 	sudo modprobe msr
-	sudo ../../RAPL/main "cargo run 25000000" Rust fasta
+	sudo cgexec -g perf_event:bench ../../RAPL/main "cargo run 25000000" Rust fasta
 
 run:
 	cargo run 25000000

@@ -3,7 +3,7 @@ compile:
 
 measure:
 	sudo modprobe msr
-	sudo ../../RAPL/main "cargo run 16000" Rust mandelbrot
+	sudo cgexec -g perf_event:bench ../../RAPL/main "cargo run 16000" Rust mandelbrot
 
 run:
 	cargo run 16000

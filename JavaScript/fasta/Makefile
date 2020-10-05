@@ -2,7 +2,7 @@ compile:
 	cp -L fasta.node-4.node fasta.node-4.js
 measure:
 	sudo modprobe msr
-	sudo ../../RAPL/main "node fasta.node-4.js 25000000" JavaScript fasta
+	sudo cgexec -g perf_event:bench ../../RAPL/main "node fasta.node-4.js 25000000" JavaScript fasta
 
 run:
 	node fasta.node-4.js 25000000

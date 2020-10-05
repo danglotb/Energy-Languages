@@ -3,7 +3,7 @@ compile:
 
 measure:
 	sudo modprobe msr
-	sudo ../../RAPL/main "cargo run 21" Rust binary-trees
+	sudo cgexec -g perf_event:bench ../../RAPL/main "cargo run 21" Rust binary-trees
 
 run:
 	cargo run 21
